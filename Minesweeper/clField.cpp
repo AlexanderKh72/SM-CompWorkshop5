@@ -1,4 +1,5 @@
 #include <ctime>
+#include <assert.h>
 #include "clField.h"
 #include "R32M.h"
 #include "Console.h"
@@ -167,7 +168,7 @@ void Field::openAll() {
 void Field::sweep(int i, int j) {
 	int m{0};
 	if (gs != PLAYING) return;
-	if (i >= nrow || j >= ncol || i < 0 || j < 0) return;
+	assert(!(i >= nrow || j >= ncol || i < 0 || j < 0));
 	switch (cells[i][j].sweep()) {
 	case OPENED:
 	case EMPTY:
@@ -196,7 +197,7 @@ void Field::sweep(int i, int j) {
 
 void Field::mark(int i, int j) {
 	if (gs != PLAYING) return;
-	if (i >= nrow || j >= ncol || i < 0 || j < 0) return;
+	assert(!(i >= nrow || j >= ncol || i < 0 || j < 0));
 	if (!cells[i][j].isOpened()) {
 		cells[i][j].mark();
 		if (cells[i][j].isMarked())
