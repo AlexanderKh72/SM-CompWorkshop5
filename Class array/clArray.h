@@ -6,7 +6,7 @@ private:
 	size_t length;
 
 public:
-	Array(size_t n, int val);
+	explicit Array(size_t n, int val);
 	Array(const int* arr, size_t n);
 	Array(const Array& a);
 	~Array();
